@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AIDA — Control Room</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="title">AIDA</div>
+        <div class="subtitle">Control Room</div>
+      </div>
+    </div>
+
+    <div class="session">
+      <span class="pill" id="sessionStatus">New Session</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- PAGE 1: START MODE -->
+    <section class="panel" id="pageStart">
+      <h1 class="h1">Start a new song</h1>
+      <p class="muted">Choose how you want to begin.</p>
+
+      <div class="grid3">
+        <button class="cardBtn" data-mode="songwriter">
+          <div class="cardTitle">✍️ Songwriter</div>
+          <div class="cardText">Start with lyrics or a chorus.</div>
+        </button>
+
+        <button class="cardBtn" data-mode="band">
+          <div class="cardTitle">🥁 Band</div>
+          <div class="cardText">Start with drums + bass groove.</div>
+        </button>
+
+        <button class="cardBtn" data-mode="electronic">
+          <div class="cardTitle">🎛 Electronic</div>
+          <div class="cardText">Start with drum machine + bass.</div>
+        </button>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="bpm">Tempo (BPM)</label>
+          <input id="bpm" type="number" min="40" max="220" value="120" />
+        </div>
+
+        <div class="field">
+          <label for="bars">Length (bars)</label>
+          <select id="bars">
+            <option value="8">8</option>
+            <option value="16" selected>16</option>
+            <option value="32">32</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="hint muted" id="startHint">
+        Tip: Band/Electronic will ask for drum + bass sound before creating Take 01.
+      </div>
+    </section>
+
+    <!-- PAGE 1B: SOUND SELECTION (shown for Band/Electronic) -->
+    <section class="panel hidden" id="pageSound">
+      <div class="rowBetween">
+        <div>
+          <h2 class="h2">Sound selection</h2>
+          <p class="muted" id="soundSubtitle">Basics for Take 01 (drums + bass).</p>
+        </div>
+        <button class="ghost" id="backToStart">← Back</button>
+      </div>
+
+      <div class="subpanel">
+        <h3 class="h3">Drums</h3>
+        <div class="pillRow" id="drumPills"></div>
+
+        <div class="row">
+          <div class="field">
+            <label for="drumIntensity">Intensity</label>
+            <input id="drumIntensity" type="range" min="0" max="100" value="70" />
+            <div class="mini muted"><span id="drumIntensityLabel">70</span>%</div>
+          </div>
+
+          <div class="field">
+            <label for="glue">Feel (Glue)</label>
+            <select id="glue">
+              <option value="tight" selected>Tight</option>
+              <option value="human">Human</option>
+              <option value="swing">Swing</option>
+              <option value="lazy">Lazy</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="subpanel">
+        <h3 class="h3">Bass</h3>
+
+        <div class="row">
+          <div class="field">
+            <label for="bassSource">Source</label>
+            <select id="bassSource">
+              <option value="live" selected>Live Bass</option>
+              <option value="synth">Synth Bass</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="bassRole">Role</label>
+            <select id="bassRole">
+              <option value="support">Support</option>
+              <option value="groove" selected>Groove</option>
+              <option value="hook">Hook</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="bassGrit">Clean ↔ Dirty</label>
+            <input id="bassGrit" type="range" min="0" max="100" value="25" />
+            <div class="mini muted"><span id="bassGritLabel">25</span>%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rowBetween">
+        <div class="muted" id="takePreview">Take 01 preview: —</div>
+        <button class="primary" id="createTake">Create Take 01</button>
+      </div>
+    </section>
+
+    <!-- PAGE 1C: SONGWRITER (simple stub for now) -->
+    <section class="panel hidden" id="pageSongwriter">
+      <div class="rowBetween">
+        <div>
+          <h2 class="h2">Songwriter start</h2>
+          <p class="muted">Paste a chorus or a few lines to begin.</p>
+        </div>
+        <button class="ghost" id="backToStart2">← Back</button>
+      </div>
+
+      <div class="field">
+        <label for="lyrics">Lyrics / Chorus</label>
+        <textarea id="lyrics" rows="8" placeholder="Paste a chorus or 2–8 lines..."></textarea>
+      </div>
+
+      <div class="rowBetween">
+        <div class="muted">Next: direction + genre (later)</div>
+        <button class="primary" id="saveLyrics">Save & Continue</button>
+      </div>
+    </section>
+
+    <!-- DEBUG VIEW (optional, helpful while building) -->
+    <section class="panel hidden" id="pageDebug">
+      <h2 class="h2">Session state (debug)</h2>
+      <pre id="debug"></pre>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

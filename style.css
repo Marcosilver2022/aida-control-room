@@ -1,0 +1,167 @@
+:root{
+  --bg:#0b0c0f;
+  --panel:#12131a;
+  --panel2:#161826;
+  --text:#e9eaf2;
+  --muted:#a7a9b8;
+  --line:rgba(255,255,255,0.08);
+  --btn:#1b1d2a;
+  --btn2:#23263a;
+  --accent:#6aa9ff;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  background:radial-gradient(1200px 600px at 20% 0%, #11162a 0%, var(--bg) 55%);
+  color:var(--text);
+}
+
+.topbar{
+  position:sticky; top:0;
+  background:rgba(10,11,15,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center;
+  padding:14px 16px;
+}
+
+.brand{display:flex; gap:12px; align-items:center}
+.dot{
+  width:10px; height:10px; border-radius:99px;
+  background:var(--accent);
+  box-shadow:0 0 18px rgba(106,169,255,0.55);
+}
+.title{font-weight:700; letter-spacing:0.08em}
+.subtitle{font-size:12px; color:var(--muted); margin-top:2px}
+
+.wrap{
+  max-width:980px;
+  margin:0 auto;
+  padding:18px 16px 40px;
+  display:grid;
+  gap:16px;
+}
+
+.panel{
+  background:linear-gradient(180deg, var(--panel) 0%, rgba(18,19,26,0.72) 100%);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+}
+
+.subpanel{
+  background:linear-gradient(180deg, var(--panel2) 0%, rgba(22,24,38,0.72) 100%);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+  margin-top:12px;
+}
+
+.hidden{display:none}
+
+.h1{margin:0 0 6px; font-size:26px}
+.h2{margin:0 0 6px; font-size:20px}
+.h3{margin:0 0 10px; font-size:16px}
+.muted{color:var(--muted)}
+.hint{margin-top:10px; font-size:13px}
+
+.grid3{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width:820px){
+  .grid3{grid-template-columns:1fr}
+}
+
+.cardBtn{
+  text-align:left;
+  background:linear-gradient(180deg, var(--btn) 0%, rgba(27,29,42,0.6) 100%);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+  cursor:pointer;
+  transition:transform .08s ease, background .08s ease, border-color .08s ease;
+}
+.cardBtn:hover{
+  transform:translateY(-1px);
+  background:linear-gradient(180deg, var(--btn2) 0%, rgba(35,38,58,0.55) 100%);
+  border-color:rgba(106,169,255,0.25);
+}
+.cardTitle{font-weight:700; font-size:16px}
+.cardText{margin-top:6px; color:var(--muted); font-size:13px; line-height:1.35}
+
+.row{display:flex; gap:12px; margin-top:12px; flex-wrap:wrap}
+.rowBetween{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+
+.field{display:flex; flex-direction:column; gap:6px; min-width:220px; flex:1}
+label{font-size:12px; color:var(--muted)}
+input, select, textarea{
+  width:100%;
+  background:#0e1020;
+  border:1px solid var(--line);
+  border-radius:12px;
+  color:var(--text);
+  padding:10px 10px;
+  outline:none;
+}
+textarea{resize:vertical; min-height:120px}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.03);
+  font-size:12px;
+  color:var(--muted);
+}
+
+.pillRow{
+  display:flex; flex-wrap:wrap; gap:8px;
+}
+
+.pillBtn{
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.03);
+  color:var(--text);
+  cursor:pointer;
+  font-size:13px;
+}
+.pillBtn:hover{border-color:rgba(106,169,255,0.25)}
+.pillBtn.active{
+  border-color:rgba(106,169,255,0.55);
+  box-shadow:0 0 0 2px rgba(106,169,255,0.12) inset;
+}
+
+button{
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.04);
+  color:var(--text);
+  padding:10px 12px;
+  cursor:pointer;
+}
+button:hover{border-color:rgba(255,255,255,0.18)}
+button.primary{
+  background:rgba(106,169,255,0.18);
+  border-color:rgba(106,169,255,0.35);
+}
+button.ghost{
+  background:transparent;
+  color:var(--muted);
+}
+.mini{font-size:12px}
+pre{
+  white-space:pre-wrap;
+  word-wrap:break-word;
+  margin:0;
+  color:#d6d8ea;
+}
